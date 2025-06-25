@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dekripsi File</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Dekripsi File Terenkripsi</h1>
+        <form action="/decrypt" method="post" enctype="multipart/form-data">
+            <p>Upload semua file hasil enkripsi beserta kunci privat RSA:</p>
+            <input type="file" name="encrypted_file" required> File terenkripsi (data.enc)<br><br>
+            <input type="file" name="encrypted_key" required> Kunci terenkripsi (key.bin)<br><br>
+            <input type="file" name="nonce_file" required> Nonce (nonce.bin)<br><br>
+            <input type="file" name="tag_file" required> Tag (tag.bin)<br><br>
+            <input type="file" name="private_key_file" required> Kunci Privat RSA (private.pem)<br><br>
+            <button type="submit">Dekripsi & Unduh File</button>
+        </form>
+        <br>
+        <a href="/">⬅️ Kembali ke halaman upload</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #2e1f1f; /* Dark brown */
+    color: #f5e9e0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    background-color: #3e2b2b;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #d4af7f; /* Gold */
+}
+
+p {
+    margin-bottom: 30px;
+}
+
+input[type="file"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: #fff;
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #6b4f4f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: #8c6f6f;
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #d4af7f;
+    color: #2e1f1f;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.download-btn:hover {
+    background-color: #e8c88e;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 50px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+    position: relative;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #d4af7f;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 38px 10px 12px;
+    border: 1px solid #6b4f4f;
+    border-radius: 6px;
+    font-size: 15px;
+    background: #2e1f1f;
+    color: #f5e9e0;
+    transition: border 0.2s;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: #d4af7f;
+    outline: none;
+    background: #3e2b2b;
+}
+
+.password-toggle .toggle-icon {
+    position: absolute;
+    top: 38px;
+    right: 12px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    fill: #bfa074;
+    transition: fill 0.2s;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.password-toggle .toggle-icon:hover {
+    fill: #d4af7f;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 11px 0;
+    background: linear-gradient(90deg, #d4af7f 0%, #6b4f4f 100%);
+    color: #2e1f1f;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(90deg, #6b4f4f 0%, #d4af7f 100%);
+    color: #fff;
+}
+
+a.download-btn {
+    color: #2e1f1f;
+    background: #d4af7f;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 10px 15px;
+    transition: background 0.2s, color 0.2s;
+}
+
+a.download-btn:hover {
+    background: #e8c88e;
+    color: #3e2b2b;
+}
+
+/* Optional: Responsive for mobile */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 40px 10px;
+    }
+}
+
+hr {
+    border: 1px solid #d4af7f;
+    margin: 40px 0 20px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #8c6f6f;
+    color: #f5e9e0;
+}
+
+li a {
+    margin-left: 10px;
+    color: #d4af7f;
+    text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+/* Navigasi antar bagian */
+.file-nav {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.file-nav a {
+    background-color: #d4af7f;
+    color: #2e1f1f;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.file-nav a:hover {
+    background-color: #e6c58c;
+}
+
+/* Pesan sukses */
+.success {
+    color: lightgreen;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+/* Navigasi antar bagian */
+.file-nav {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.file-nav a {
+    background-color: #d4af7f;
+    color: #2e1f1f;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.file-nav a:hover {
+    background-color: #e6c58c;
+}
+
+/* Pesan sukses */
+.success {
+    color: lightgreen;
+    margin: 10px 0;
+    font-weight: bold;
+}

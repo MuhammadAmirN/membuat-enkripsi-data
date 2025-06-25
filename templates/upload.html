@@ -1,0 +1,103 @@
+<!-- upload.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Upload dan Enkripsi File</h1>
+    <p>Pilih file untuk dienkripsi dan simpan secara aman.</p>
+
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" required><br><br>
+        <label>Pilih pengguna yang diberi akses:</label>
+        <select name="shared_with">
+            <option value="">-- Hanya Saya --</option>
+            <option value="ALL">🔓 Untuk Semua Pengguna</option>
+            {% for u in users %}
+                {% if u.id != current_user.id %}
+                    <option value="{{ u.id }}">{{ u.username }}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br><br>
+        <button type="submit">Upload & Enkripsi</button>
+    </form>
+
+    {% if success %}
+        <p class="success">{{ success }}</p>
+    {% endif %}
+
+    <nav class="file-nav">
+        <a href="javascript:void(0)" onclick="showSection('myfiles')">📁 File Saya</a>
+        <a href="javascript:void(0)" onclick="showSection('shared')">🤝 Dibagikan ke Saya</a>
+        <a href="javascript:void(0)" onclick="showSection('all')">🌐 Semua File</a>
+    </nav>
+
+    <!-- 📁 File Saya -->
+    <div id="myfiles-section">
+        <h2>📁 File Saya</h2>
+        <ul>
+            {% for file in my_files %}
+                <li>
+                    {{ file.filename }}
+                    <a href="{{ url_for('download_file', file_id=file.id) }}">🔽 Unduh</a>
+                    <a href="{{ url_for('decrypt_and_download', file_id=file.id) }}">🛡️ Unduh & Dekripsi</a>
+                </li>
+            {% else %}
+                <li>Tidak ada file milik Anda.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- 🤝 Dibagikan -->
+    <div id="shared-section" style="display: none;">
+        <h2>🤝 File yang Dibagikan ke Saya</h2>
+        <ul>
+            {% for file in shared_files %}
+                <li>
+                    {{ file.filename }}
+                    <a href="{{ url_for('download_file', file_id=file.id) }}">🔽 Unduh</a>
+                    <a href="{{ url_for('decrypt_and_download', file_id=file.id) }}">🛡️ Unduh & Dekripsi</a>
+                </li>
+            {% else %}
+                <li>Tidak ada file yang dibagikan ke Anda.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- 🌐 Semua File -->
+    <div id="all-section" style="display: none;">
+        <h2>🌐 Semua File (hanya metadata)</h2>
+        <ul>
+            {% for file in all_files %}
+                <li>
+                    {{ file.filename }} (oleh user ID {{ file.user_id }})
+                    <a href="{{ url_for('download_file', file_id=file.id) }}">🔽 Unduh</a>
+                    {% if file.user_id == current_user.id or file.shared_with == current_user.id or (file.shared_with == None and file.encrypted_key_shared) %}
+                        <a href="{{ url_for('decrypt_and_download', file_id=file.id) }}">🛡️ Unduh & Dekripsi</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<footer>&copy; 2025 Hybrid Crypto App | Kelompok 10</footer>
+
+<script>
+    function showSection(sectionId) {
+        const sections = ['myfiles', 'shared', 'all'];
+        sections.forEach(id => {
+            document.getElementById(id + '-section').style.display = 'none';
+        });
+        document.getElementById(sectionId + '-section').style.display = 'block';
+    }
+    window.onload = () => {
+        showSection('myfiles');
+    };
+</script>
+</body>
+</html>

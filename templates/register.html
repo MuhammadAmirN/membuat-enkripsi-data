@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrasi Akun</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .password-toggle {
+            position: relative;
+        }
+        .toggle-icon {
+            position: absolute;
+            top: 32px;
+            right: 10px;
+            cursor: pointer;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registrasi</h1>
+        <form method="POST" action="/register">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" required class="form-control" style="width: 100%;">
+            </div>
+            <div class="form-group password-toggle">
+                <label>Password</label>
+                <input type="password" name="password" id="regPassword" required class="form-control" style="width: 100%;">
+                <span class="toggle-icon" onclick="togglePassword('regPassword')"></span>
+            </div>
+            <button type="submit">Daftar</button>
+        </form>
+        <p>Sudah punya akun? <a href="/login" class="download-btn">Login di sini</a></p>
+    </div>
+    <script>
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            input.type = input.type === "password" ? "text" : "password";
+        }
+    </script>
+</body>
+</html>
